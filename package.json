@@ -1,0 +1,36 @@
+{
+	"name": "ts-node-base",
+	"version": "1.0.0",
+	"description": "一个基于TS的，使用webpack打包，pnpm包管理的node基础工程。",
+	"main": "dist/server/index.js",
+	"bin": "dist/server/index.js",
+	"scripts": {
+		"watch": "concurrently \"npx webpack -w\" \"tsc --project ./tsconfig.json -w\" \"tsc --project ./src/client/tsconfig.es6.json -w\" \"nodemon ./dist/server/index.js\"",
+		"copy": "concurrently \"@powershell -Command if (!(Test-Path .\\dist\\client_temp)) {New-Item .\\dist\\client_temp -Type Directory}; Copy-Item -Path .\\src\\html\\* -Destination .\\dist\\client_temp -Recurse -Force\" \"@powershell -Command if (!(Test-Path .\\dist\\client)) {New-Item .\\dist\\client -Type Directory}; Copy-Item -Path .\\src\\html\\* -Destination .\\dist\\client -Recurse -Force\"",
+		"build": "tsc --project ./tsconfig.json && tsc --project ./src/client/tsconfig.es6.json && npx webpack",
+		"serve": "node --trace-warnings ./dist/server/index.js"
+	},
+	"keywords": [],
+	"author": "NoRain",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"@types/multer": "^1.4.11",
+		"@types/node": "^20.2.1",
+		"concurrently": "^8.2.2",
+		"nodemon": "^2.0.22",
+		"ts-node": "^10.9.2",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.0.4",
+		"webpack": "^5.90.3",
+		"webpack-cli": "^5.1.4",
+		"webpack-node-externals": "^3.0.0",
+		"ws": "^8.17.0"
+	},
+	"dependencies": {
+		"common-js": "^0.3.8",
+		"express": "^4.18.2",
+		"multer": "^1.4.5-lts.1",
+		"open": "^6.4.0"
+	}
+}
