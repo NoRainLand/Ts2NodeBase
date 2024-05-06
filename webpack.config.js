@@ -8,7 +8,7 @@ module.exports = [
 			path: path.resolve(__dirname, "dist/client"),
 			filename: "index.js",
 		},
-		mode: "production",
+		mode: "production",//development
 	},
 	{
 		entry: "./dist/server_temp/index.js",
@@ -17,7 +17,7 @@ module.exports = [
 			filename: "index.js",
 		},
 		externals: [nodeExternals()], // 在 externals 选项中使用 webpack-node-externals
-		mode: "production",
+		mode: "production",//development
 		target: "node",
 	},
 ];

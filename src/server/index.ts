@@ -29,8 +29,17 @@ export default class index {
             }
         }
         console.warn("无法获取本机IP地址");
+        new mvc.ss();
         return '127.0.0.1';
     }
 }
 
 new index();
+
+module mvc{
+    export class ss{
+        constructor(){
+            console.log("12312");
+        }
+    }
+}
